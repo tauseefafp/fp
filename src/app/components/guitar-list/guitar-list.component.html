@@ -1,1 +1,28 @@
-<p>guitar-list works!</p>
+<html>
+<h2>Tauseef's Guitar Store</h2>
+<hr> Search a Guitar: <input type="text" [(ngModel)]="searchText" name="search" placeholder="Search.."> &nbsp; sort by:
+<select name="sortname" (change)="updateSortHeader($event)">
+      <option value="name" selected>Name</option>
+      <option value="date">Date</option>
+      <option value="price">Price</option>
+    </select>
+<br>
+<form action="submit">
+    <input type="radio" name="orderBy" id="asc" value="ascending" (change)="orderBy($event)">Ascending
+    <input type="radio" name="orderBy" id="desc" value="descending" (change)="orderBy($event)">Descending
+</form>
+<br><br>
+<div *ngFor="let item of guitars ; let i=index">
+    <div class="cards">
+        <img id='images' src="../../assets/img/{{item.image}}.jpg">
+        <br>
+        <nav>
+         <!--   <app-button color="green" text="{{item.name}}" [routerLink]="['/details',i]" (btnClick)="onClick($event)"></app-button> -->
+        </nav>
+
+        <br>Description: {{item.description}}
+        <br>Price: {{item.price}}
+    </div>
+</div>
+
+</html>
